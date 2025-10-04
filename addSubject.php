@@ -185,36 +185,51 @@
             padding: 40px 20px;
         }
 
-        .card {
-            width: 70%;
-            max-width: 850px;
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        .card-glass-form {
+            background: rgba(74, 200, 224, 0.12);
+            border: 1px solid rgba(74, 200, 224, 0.3);
+            backdrop-filter: blur(14px);
+            border-radius: 20px;
+            width: 480px;
+            color: #e0f0ff;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s ease-in-out, box-shadow 0.3s ease;
         }
 
-        .card h4 {
-            font-weight: 600;
-            color: #333;
+        .card-glass-form:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 40px rgba(74, 200, 224, 0.25);
         }
 
-        label {
+        .input-glass {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #fff;
+        }
+
+        .input-glass:focus {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: #4ac8e0;
+            box-shadow: 0 0 0 0.25rem rgba(74, 200, 224, 0.25);
+            color: #0c0b0bff;
+        }
+
+        .form-label {
             font-weight: 500;
+            letter-spacing: 0.3px;
         }
 
-        .btn-warning {
-            background-color: #ffb700;
+        .btn-info {
+            background-color: #4ac8e0;
             border: none;
         }
 
-        .btn-warning:hover {
-            background-color: #f0a500;
+        .btn-info:hover {
+            background-color: #3ab6d5;
         }
 
-        @media (max-width: 992px) {
-            .main-content {
-                margin-left: 0;
-            }
+        .btn-outline-light:hover {
+            background-color: rgba(255, 255, 255, 0.15);
         }
     </style>
     </style>
@@ -244,27 +259,27 @@
                         <i class="bi bi-bell fs-5"></i>
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="notifBadge">2</span>
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-end shadow-lg p-2" aria-labelledby="notifDropdown" style="min-width: 320px;">
-                        <li class="dropdown-item d-flex justify-content-between align-items-start">
-                            <div>
-                                <small class="fw-bold">Student Application</small><br>
-                                <span>A student wants to join your subject.</span>
-                            </div>
-                            <div class="ms-2 d-flex gap-1">
-                                <button class="btn btn-sm btn-success btn-confirm">Confirm</button>
-                                <button class="btn btn-sm btn-danger btn-delete">Delete</button>
-                            </div>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li class="dropdown-item d-flex justify-content-between align-items-start">
-                            <div>
-                                <small class="fw-bold">Admin Update</small><br>
-                                <span>Admin confirmed you in the subject.</span>
-                            </div>
-                        </li>
-                    </ul>
+                    <!-- <ul class="dropdown-menu dropdown-menu-end shadow-lg p-2" aria-labelledby="notifDropdown" style="min-width: 320px;">
+            <li class="dropdown-item d-flex justify-content-between align-items-start">
+              <div>
+                <small class="fw-bold">Student Application</small><br>
+                <span>A student wants to join your subject.</span>
+              </div>
+              <div class="ms-2 d-flex gap-1">
+                <button class="btn btn-sm btn-success btn-confirm">Confirm</button>
+                <button class="btn btn-sm btn-danger btn-delete">Delete</button>
+              </div>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li class="dropdown-item d-flex justify-content-between align-items-start">
+              <div>
+                <small class="fw-bold">Admin Update</small><br>
+                <span>Admin confirmed you in the subject.</span>
+              </div>
+            </li>
+          </ul> -->
                 </div>
 
                 <img src="/img/juswa.jpg" class="profile-pic" alt="Prof. Atis" />
@@ -272,31 +287,66 @@
         </div>
     </nav>
 
+
     <!-- Sidebar (Desktop) -->
     <nav class="sidebar d-none d-lg-flex flex-column">
-        <a href="/" class="active"><i class="bi bi-house"></i> Dashboard</a>
-        <a href="/subjects_available"><i class="bi bi-book"></i> Instructor</a>
-        <a href="/my_subjects"><i class="bi bi-person-lines-fill"></i> My Subjects</a>
-        <a href="/profile"><i class="bi bi-person-circle"></i> Profile</a>
-        <a href="#"><i class="bi bi-gear"></i> Settings</a>
-        <a href="#"><i class="bi bi-box-arrow-right"></i> Logout</a>
+        <li class="nav-item mb-2">
+            <a href="Index.php" class="nav-link text-white">
+                <i class="bi bi-speedometer2 me-2"></i> Dashboard
+            </a>
+        </li>
+        <li class="nav-item mb-2">
+            <a class="nav-link text-white d-flex justify-content-between align-items-center" data-bs-toggle="collapse" href="#teacherMenu" role="button" aria-expanded="false" aria-controls="teacherMenu">
+                <span><i class="bi bi-person-badge me-2"></i> Teacher</span>
+                <i class="bi bi-caret-down-fill small"></i>
+            </a>
+
+            <!-- Dropdown Items -->
+            <div class="collapse ps-3" id="teacherMenu">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a href="add-faculty.php" class="nav-link text-white-50">
+                            <i class="bi bi-person-plus me-2"></i> Add Teacher
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="manage-faculty.php" class="nav-link text-white-50">
+                            <i class="bi bi-people me-2"></i> Manage Teacher
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item mb-2">
+            <a class="nav-link text-white d-flex justify-content-between align-items-center" data-bs-toggle="collapse" href="#subjectMenu" role="button" aria-expanded="false" aria-controls="subjectMenu">
+                <span><i class="bi bi-journal-text me-2"></i> Subject</span>
+                <i class="bi bi-caret-down-fill small"></i>
+            </a>
+
+            <div class="collapse ps-3" id="subjectMenu">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a href="add-subject.php" class="nav-link text-white-50">
+                            <i class="bi bi-plus-circle me-2"></i> Add Subject
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="manage-subject.php" class="nav-link text-white-50">
+                            <i class="bi bi-list-check me-2"></i> Manage Subject
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
+        <!-- Logout -->
+        <li class="nav-item mt-3">
+            <a href="logout.php" class="nav-link text-danger">
+                <i class="bi bi-box-arrow-right me-2"></i> Logout
+            </a>
+        </li>
     </nav>
 
-    <!-- Offcanvas Sidebar -->
-    <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="mobileSidebar" aria-labelledby="mobileSidebarLabel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="mobileSidebarLabel">Menu</h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body d-flex flex-column p-0">
-            <a href="/" class="active px-3 py-2 d-flex align-items-center gap-2"><i class="bi bi-house"></i> Dashboard</a>
-            <a href="/subjects_available" class="px-3 py-2 d-flex align-items-center gap-2"><i class="bi bi-book"></i> Available Subjects</a>
-            <a href="/my_subjects" class="px-3 py-2 d-flex align-items-center gap-2"><i class="bi bi-person-lines-fill"></i> My Subjects</a>
-            <a href="/profile" class="px-3 py-2 d-flex align-items-center gap-2"><i class="bi bi-person-circle"></i> Profile</a>
-            <a href="#" class="px-3 py-2 d-flex align-items-center gap-2"><i class="bi bi-gear"></i> Settings</a>
-            <a href="#" class="px-3 py-2 d-flex align-items-center gap-2"><i class="bi bi-box-arrow-right"></i> Logout</a>
-        </div>
-    </div>
 
     <!-- Main Content -->
     <div class="header">
@@ -304,24 +354,23 @@
     </div>
 
     <div class="main-content d-flex justify-content-center align-items-center">
-        <div class="card p-5 bg-white w-50 shadow-lg">
-            <h4 class="mb-4 text-center fw-bold text-dark">Add Subject</h4>
+        <div class="card-glass-form p-5 shadow-lg">
+            <h3 class="mb-4 text-center fw-bold text-white">Add Subject</h3>
 
             <form action="insert-subject.php" method="POST">
-
                 <div class="mb-3">
-                    <label class="form-label">Subject Code</label>
-                    <input type="text" name="subject_code" class="form-control" placeholder="e.g. IT101" required>
+                    <label class="form-label text-light">Subject Code</label>
+                    <input type="text" name="subject_code" class="form-control input-glass" placeholder="e.g. IT101" required>
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">Subject Name</label>
-                    <input type="text" name="subject_name" class="form-control" placeholder="e.g. Introduction to IT" required>
+                    <label class="form-label text-light">Subject Name</label>
+                    <input type="text" name="subject_name" class="form-control input-glass" placeholder="e.g. Introduction to IT" required>
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">Semester</label>
-                    <select name="semester" class="form-select" required>
+                    <label class="form-label text-light">Semester</label>
+                    <select name="semester" class="form-select input-glass" required>
                         <option value="">Select Semester</option>
                         <option>1st Semester</option>
                         <option>2nd Semester</option>
@@ -329,8 +378,8 @@
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">Year Level</label>
-                    <select name="year_level" class="form-select" required>
+                    <label class="form-label text-light">Year Level</label>
+                    <select name="year_level" class="form-select input-glass" required>
                         <option value="">Select Year Level</option>
                         <option>1st Year</option>
                         <option>2nd Year</option>
@@ -340,17 +389,18 @@
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">Credit Units</label>
-                    <input type="number" name="units" class="form-control" placeholder="e.g. 3">
+                    <label class="form-label text-light">Credit Units</label>
+                    <input type="number" name="units" class="form-control input-glass" placeholder="e.g. 3">
                 </div>
 
                 <div class="text-center mt-4">
-                    <button type="submit" name="save" class="btn btn-warning text-white px-4 me-2">Save</button>
-                    <button type="reset" class="btn btn-secondary px-4">Reset</button>
+                    <button type="submit" name="save" class="btn btn-info text-white px-4 me-2">Save</button>
+                    <button type="reset" class="btn btn-outline-light px-4">Reset</button>
                 </div>
             </form>
         </div>
     </div>
+
 
 
     <!-- Bootstrap Bundle -->

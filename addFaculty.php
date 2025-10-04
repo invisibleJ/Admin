@@ -185,36 +185,51 @@
             padding: 40px 20px;
         }
 
-        .card {
-            width: 200;
-            max-width: 950px;
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        .card-glass-form {
+            background: rgba(74, 200, 224, 0.12);
+            border: 1px solid rgba(74, 200, 224, 0.3);
+            backdrop-filter: blur(14px);
+            border-radius: 20px;
+            width: 480px;
+            color: #e0f0ff;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s ease-in-out, box-shadow 0.3s ease;
         }
 
-        .card h4 {
-            font-weight: 600;
-            color: #333;
+        .card-glass-form:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 40px rgba(74, 200, 224, 0.25);
         }
 
-        label {
+        .input-glass {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #fff;
+        }
+
+        .input-glass:focus {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: #4ac8e0;
+            box-shadow: 0 0 0 0.25rem rgba(74, 200, 224, 0.25);
+            color: #111010ff;
+        }
+
+        .form-label {
             font-weight: 500;
+            letter-spacing: 0.3px;
         }
 
-        .btn-warning {
-            background-color: #ffb700;
+        .btn-info {
+            background-color: #4ac8e0;
             border: none;
         }
 
-        .btn-warning:hover {
-            background-color: #f0a500;
+        .btn-info:hover {
+            background-color: #3ab6d5;
         }
 
-        @media (max-width: 992px) {
-            .main-content {
-                margin-left: 0;
-            }
+        .btn-outline-light:hover {
+            background-color: rgba(255, 255, 255, 0.15);
         }
     </style>
 </head>
@@ -281,20 +296,7 @@
         <a href="#"><i class="bi bi-box-arrow-right"></i> Logout</a>
     </nav>
 
-    <!-- Offcanvas Sidebar -->
-    <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="mobileSidebar" aria-labelledby="mobileSidebarLabel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="mobileSidebarLabel">Menu</h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body d-flex flex-column p-0">
-            <a href="/" class="active px-3 py-2 d-flex align-items-center gap-2"><i class="bi bi-house"></i> Dashboard</a>
-            <a href="/subjects_available" class="px-3 py-2 d-flex align-items-center gap-2"><i class="bi bi-book"></i> Available Subjects</a>
-            <a href="/my_subjects" class="px-3 py-2 d-flex align-items-center gap-2"><i class="bi bi-person-lines-fill"></i> My Subjects</a>
-            <a href="/profile" class="px-3 py-2 d-flex align-items-center gap-2"><i class="bi bi-person-circle"></i> Profile</a>
-            <a href="#" class="px-3 py-2 d-flex align-items-center gap-2"><i class="bi bi-gear"></i> Settings</a>
-            <a href="#" class="px-3 py-2 d-flex align-items-center gap-2"><i class="bi bi-box-arrow-right"></i> Logout</a>
-        </div>
+
     </div>
 
     <!-- Main Content -->
@@ -302,67 +304,66 @@
         <h4>Admin</h4>
     </div>
 
-    <div class="main-content d-flex justify-content-center align-items-center" style="min-height: 100vh; margin-left: 240px;">
-        <div class="card p-4" style="width: 70%; max-width: 900px;">
+    <div class="main-content d-flex justify-content-center align-items-center">
+        <div class="card-glass-form p-5 shadow-lg">
+            <h3 class="mb-4 text-center fw-bold text-white">Add Faculty</h3>
 
-            <h5 class="mb-4">Add Instructor</h5>
-            <form action="insert-teacher.php" method="POST" enctype="multipart/form-data">
-                <div class="row mb-3">
-
-                    <div class="mb-3">
-                        <label class="form-label">First Name</label>
-                        <input type="text" name="first_name" class="form-control" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Last Name</label>
-                        <input type="text" name="last_name" class="form-control" required>
-                    </div>
+            <form action="insert-faculty.php" method="POST">
+                <div class="mb-3">
+                    <label class="form-label text-light">First Name</label>
+                    <input type="text" name="first_name" class="form-control input-glass" required>
                 </div>
 
                 <div class="mb-3">
-                    <div class="col-md-6">
-                        <label class="form-label">Password</label>
-                        <input type="text" name="mobile" class="form-control">
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label class="form-label">Email</label>
-                        <input type="email" name="email" class="form-control">
-                    </div>
+                    <label class="form-label text-light">Last Name</label>
+                    <input type="text" name="last_name" class="form-control input-glass" required>
                 </div>
 
                 <div class="mb-3">
-                    <div class="col-md-4">
-                        <label class="form-label">Gender</label>
-                        <select name="gender" class="form-select" required>
-                            <option value="">Please Select Gender</option>
-                            <option>Male</option>
-                            <option>Female</option>
-                            <option>Other</option>
-                        </select>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">ID Number</label>
-                        <input type="text" name="emp_id" class="form-control">
-                    </div>
+                    <label class="form-label text-light">Password</label>
+                    <input type="password" name="password" class="form-control input-glass" required>
                 </div>
 
-
-                <!--                
                 <div class="mb-3">
-                    <label class="form-label">Upload Teacher Photo (150x150)</label>
-                    <input type="file" name="photo" class="form-control">
-                </div> -->
+                    <label class="form-label text-light">Email</label>
+                    <input type="email" name="email" class="form-control input-glass" required>
+                </div>
 
-                <div class="text-end">
-                    <button type="submit" name="save" class="btn btn-warning text-white">Save</button>
-                    <button type="reset" class="btn btn-secondary">Reset</button>
+                <div class="mb-3">
+                    <label class="form-label text-light">Mobile Number</label>
+                    <input type="email" name="email" class="form-control input-glass" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label text-light">Gender</label>
+                    <select name="gender" class="form-select input-glass" required>
+                        <option value="">Please Select Gender</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label text-light">ID Number</label>
+                    <input type="text" name="emp_id" class="form-control input-glass" required>
+                </div>
+
+                <!-- Optional Photo Upload
+      <div class="mb-3">
+        <label class="form-label text-light">Upload Faculty Photo (150x150)</label>
+        <input type="file" name="photo" class="form-control input-glass">
+      </div>
+      -->
+
+                <div class="text-center mt-4">
+                    <button type="submit" name="save" class="btn btn-info text-white px-4 me-2">Save</button>
+                    <button type="reset" class="btn btn-outline-light px-4">Reset</button>
                 </div>
             </form>
         </div>
     </div>
+
 
     <!-- Bootstrap Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
